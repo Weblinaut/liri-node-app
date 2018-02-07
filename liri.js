@@ -41,7 +41,7 @@ inquirer.prompt([
                     return notMetacritic;
                 });
 
-                console.log("Title: " + data.Title + "\nRelease Year: " + data.Year + ratingText + "\nCountry: " + data.Country +"\nLanguage: " + data.Language + "\nPlot: " + data.Plot + "\nActors: " + data.Actors);
+                console.log("Title: " + data.Title + "\nRelease Year: " + data.Year + "\nCountry: " +  ratingText +data.Country +"\nLanguage: " + data.Language + "\nPlot: " + data.Plot + "\nActors: " + data.Actors);
 
             }
         });
@@ -60,7 +60,7 @@ inquirer.prompt([
             .then(function(resp) {
                 var info = JSON.stringify(resp);
 
-                    console.log(info.item);
+                    console.log(info);
 
                 // console.log(info);
 
