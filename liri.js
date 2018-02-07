@@ -54,6 +54,22 @@ inquirer.prompt([
         });
 
     }
+    if (response.userChoice === "Get song info") {
+        spotify
+            .search({ type: 'track', query: response.searchQuery })
+            .then(function(resp) {
+                var info = JSON.stringify(resp);
+
+                    console.log(info.item);
+
+                // console.log(info);
+
+                // console.log(JSON.parse(info));
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
+    }
 });
 
 
