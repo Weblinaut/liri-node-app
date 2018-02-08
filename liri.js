@@ -6,11 +6,8 @@ var Twitter = require('twitter');
 var fs = require("fs");
 var request = require ("request");
 
-
-
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
-
 
 inquirer.prompt([
     {
@@ -58,43 +55,28 @@ inquirer.prompt([
         spotify
             .search({ type: 'track', query: response.searchQuery })
             .then(function(resp) {
-                var info = JSON.stringify(resp);
 
-                    console.log(info);
+                for (let i = 0; i < resp.tracks.items.length; i++) {
+                    let track = resp.tracks.items[i].name
+                    let songUrl = resp.tracks.items[i].href
+                    let albumName = resp.tracks.items[i].album.name
+                    let artists = []
+                    for(let j = 0; j < resp.tracks.items[i].artists.length; j++) {
+                        let artistName = resp.tracks.items[i].artists[j].name
+                        artists.push(artistName)
 
-                // console.log(info);
+                    }
+                    console.log(`${i + 1} 
+${artists.join(",")}
+${track}
+${songUrl}
+${albumName}
+`)//es6 string literals
 
-                // console.log(JSON.parse(info));
+                }
             })
             .catch(function(err) {
                 console.log(err);
             });
     }
 });
-
-
-
-// var action = process.argv[2];
-// var nodeArgs = process.argv;
-// var userInput = "";
-// for (var i = 3; i < nodeArgs.length; i++) {
-//     if (i > 3 && i < nodeArgs.length) {
-//         console.log(nodeArgs);
-//         userInput = userInput + "+" + nodeArgs[i];
-//     }
-//     else {
-//         userInput += nodeArgs[i];
-//     }
-//
-// };
-
-
-
-
-//* Year the movie came out.
-//* IMDB Rating of the movie.
-//* Rotten Tomatoes Rating of the movie.
-//* Country where the movie was produced.
-//* Language of the movie.
-//* Plot of the movie.
-//* Actors in the movie.
