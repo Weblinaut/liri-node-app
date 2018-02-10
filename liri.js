@@ -14,7 +14,7 @@ inquirer.prompt([
         type: "list",
         name: "userChoice",
         message: "I am Liri, what would you like for me to do??",
-        choices: ["Search Twitter", "Get movie info", "Get song info", "Something Else..."]
+        choices: ["Search Twitter", "Get movie info", "Search Spotify", "Something Else..."]
     },
     {
         type: "input",
